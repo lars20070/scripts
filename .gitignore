@@ -130,6 +130,7 @@ dmypy.json
 
 # parallel
 bill_*
+*.png
 
 # macOS
 .DS_Store
