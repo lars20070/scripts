@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# parallel
+bill_*
+
+# macOS
+.DS_Store
