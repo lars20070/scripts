@@ -29,7 +29,7 @@ cd $homedir || exit 2
 # wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz -O uniprot_sprot.fasta.gz
 # gzip -d uniprot_sprot.fasta.gz
 # wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz -O uniprot_trembl.fasta.gz
-#gzip -d uniprot_trembl.fasta.gz
+# gzip -d uniprot_trembl.fasta.gz
 
 # download contaminants
 # from The Global Proteome Machine (GPM) common Repository of Adventitious Proteins (cRAP)
