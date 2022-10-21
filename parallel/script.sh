@@ -20,7 +20,7 @@
 rm ./bills/*.png
 # find ./bills -name "*.jpg" | parallel -I% --max-args 1 sips -s format png % --out %.png
 # find ./bills -name "*.jpg" | parallel --max-args 1 sips -s format png {} --out {.}.png
-parallel --max-args 1 sips -s format png {} --out {.}.png ::: ./bills/*.jpg
+parallel --max-args 1 sips -s format png {} --out "{.}.png" ::: ./bills/*.jpg
 
 # # list files
 # find ./bills -name "*" | parallel --max-args 1 echo {}
