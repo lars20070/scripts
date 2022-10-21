@@ -13,7 +13,7 @@
 # directory for all ComPIL databases
 databasedir="/Users/lars/Projects/2022/20220628_GenentechComPIL/databases/"
 # home directory
-homedir=$databasedir"test/"
+homedir=$databasedir"human/"
 
 cd $homedir || exit 2
 
