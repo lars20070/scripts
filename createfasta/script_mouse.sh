@@ -32,6 +32,6 @@ rm -fr ncbi
 mkdir ncbi
 cd ncbi || exit 2
 wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.nonredundant*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archea/archea.nonredundant*.protein.faa.gz
+# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
