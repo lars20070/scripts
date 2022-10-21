@@ -51,9 +51,14 @@ cd $homedir || exit 2
 # Bacteria + Archea + Fungi + Viruses
 # rm -fr ncbi
 # mkdir ncbi
-cd ncbi || exit 2
+# cd ncbi || exit 2
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.nonredundant*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
-gzip -d ./*glob*
+# gzip -d ./*glob*
+# cd $homedir || exit 2
+# cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
+
+# combine all sources
+cat reference_hmp_dacc_gastrointestinal_tract.fasta reference_embl_bork_human_gut.fasta uniprot_sprot.fasta uniprot_trembl.fasta contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta

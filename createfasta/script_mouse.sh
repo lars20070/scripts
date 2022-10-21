@@ -35,3 +35,8 @@ wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.nonredundant*.p
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
 # wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
+cd $homedir || exit 2
+cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
+
+# combine all sources
+cat contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta
