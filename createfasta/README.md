@@ -4,7 +4,8 @@ Compiling `fasta` files for ComPIL searches from public repositories
 
 | script | description |
 | :--- | :--- |
-| `script.sh` | download sources and merge into single `fasta` |
+| `script.sh` | download sources for human microbiome and merge into single `fasta` |
+| `script_mouse.sh` | download sources for mouse microbiome and merge into single `fasta` |
 
 ## `fasta` file for human gut microbiome
 
