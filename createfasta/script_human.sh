@@ -61,4 +61,26 @@ cd $homedir || exit 2
 # cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
 
 # combine all sources
-cat reference_hmp_dacc_gastrointestinal_tract.fasta reference_embl_bork_human_gut.fasta uniprot_sprot.fasta uniprot_trembl.fasta contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta
+# cat reference_hmp_dacc_gastrointestinal_tract.fasta reference_embl_bork_human_gut.fasta uniprot_sprot.fasta uniprot_trembl.fasta contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta
+
+# remove line breaks
+# write header and sequence in a single row separated by ">>>"
+# if line starts with > then print the line (i.e. the header) and set next-line-character to \n for later
+# if line does not start with > then print the next-line-character, print the line, print the ">>>" separator and set next-line-character to empty for later
+awk '!/^>/ { printf "%s", $0; n = "\n" } 
+/^>/ { printf "%s%s%s", n, $0, ">>>"; n = "" }
+END { printf "%s", n }
+' combined.fasta > combined_temp.fasta
+
+# make second column unique
+# store header in m with seqeunce as index
+# then finally print m
+# awk 'BEGIN{FS=">>>"}{m[$2]=$1}END{for(i in m)print m[i],i}' combined_temp.fasta > combined_temp2.fasta
+
+# add line breaks
+# seqkit seq -w 60 ucombined_temp2.fasta > combined_unique.fasta
+
+# remove temporary files
+rm ./*glob*temp.fasta
+rm ./*glob*temp2.fasta
+
