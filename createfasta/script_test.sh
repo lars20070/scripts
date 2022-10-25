@@ -31,7 +31,8 @@ cd $homedir || exit 2
 # awk 'BEGIN{FS=">>>"}{m[$2]=$1}END{for(i in m)print m[i],i}' combined_reverse_temp.fasta > combined_reverse_unique.fasta
 # an alternative with less memory footprint
 #sed -e s/\>\>\>/\>/g combined_reverse_temp.fasta> combined_reverse_temp2.fasta
-sort -T~/tmp -u -t">" -k3 combined_reverse_temp2.fasta > combined_reverse_temp3.fasta
+#sort -T~/tmp -u -t">" -k3 combined_reverse_temp2.fasta > combined_reverse_temp3.fasta
+sort -u -t">" -k3 combined_reverse_temp2.fasta > combined_reverse_temp3.fasta
 
 
 
