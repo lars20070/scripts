@@ -60,6 +60,38 @@ cd $homedir || exit 2
 # cd $homedir || exit 2
 # cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
 
+# Unified Human Gastrointestinal Genome (UHGG) v2.0
+# released in MGnify (formerly EBI Metagenomics)
+# https://www.ebi.ac.uk/about/news/updates-from-data-resources/uhgg-v20-released-mgnify/
+# https://www.ebi.ac.uk/metagenomics/genome-catalogues/human-gut-v2-0
+# protein coding sequences clustered at 100%, 95%, 90% and 50% amino acid identity
+# rm -fr uhgg
+# mkdir uhgg
+# cd uhgg || exit 2
+# wget ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v2.0/protein_catalogue/uhgp-50.tar.gz
+# wget ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v2.0/protein_catalogue/uhgp-90.tar.gz
+# wget ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v2.0/protein_catalogue/uhgp-95.tar.gz
+# wget ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v2.0/protein_catalogue/uhgp-100.tar.gz
+# tar -zxvf ./uhgp-50.tar.gz
+# tar -zxvf ./uhgp-90.tar.gz
+# tar -zxvf ./uhgp-95.tar.gz
+# tar -zxvf ./uhgp-100.tar.gz
+# cd $homedir || exit 2
+# cat ./uhgg/uhgp-50/uhgp-50.faa ./uhgg/uhgp-90/uhgp-90.faa ./uhgg/uhgp-95/uhgp-95.faa ./uhgg/uhgp-100/uhgp-100.faa > uhgg.fasta
+
+# Genome Taxonomy Database (GTDB)
+rm -fr gtdb
+mkdir gtdb
+cd gtdb || exit 2
+wget https://data.gtdb.ecogenomic.org/releases/latest/genomic_files_reps/ar53_marker_genes_all.tar.gz
+wget https://data.gtdb.ecogenomic.org/releases/latest/genomic_files_reps/bac120_marker_genes_all.tar.gz
+# tar -zxvf ./*.tar.gz
+# cd $homedir || exit 2
+
+# Gut Phage Database (GPD)
+# wget ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/genome_sets/gut_phage_database/GPD_proteome.faa.gz -O gpd.faa.gz
+
+
 # combine all sources
 # cat reference_hmp_dacc_gastrointestinal_tract.fasta reference_embl_bork_human_gut.fasta uniprot_sprot.fasta uniprot_trembl.fasta contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta
 
@@ -67,10 +99,10 @@ cd $homedir || exit 2
 # write header and sequence in a single row separated by ">>>"
 # if line starts with > then print the line (i.e. the header) and set next-line-character to \n for later
 # if line does not start with > then print the next-line-character, print the line, print the ">>>" separator and set next-line-character to empty for later
-awk '!/^>/ { printf "%s", $0; n = "\n" } 
-/^>/ { printf "%s%s%s", n, $0, ">>>"; n = "" }
-END { printf "%s", n }
-' combined.fasta > combined_temp.fasta
+# awk '!/^>/ { printf "%s", $0; n = "\n" } 
+# /^>/ { printf "%s%s%s", n, $0, ">>>"; n = "" }
+# END { printf "%s", n }
+# ' combined.fasta > combined_temp.fasta
 
 # make second column unique
 # store header in m with seqeunce as index
@@ -81,6 +113,6 @@ END { printf "%s", n }
 # seqkit seq -w 60 ucombined_temp2.fasta > combined_unique.fasta
 
 # remove temporary files
-rm ./*glob*temp.fasta
-rm ./*glob*temp2.fasta
+# rm ./*glob*temp.fasta
+# rm ./*glob*temp2.fasta
 

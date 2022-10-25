@@ -17,18 +17,22 @@ cd $homedir || exit 2
 
 
 
-# remove line breaks
-# if line starts with > then print the line (i.e. header) and set next-line-character to \n for later
-# if line does not start with > then print the next-line-character, print the line, print the ">>>" separator and set next-line-character to empty for later
-awk '!/^>/ { printf "%s", $0; n = "\n" } 
-/^>/ { printf "%s%s%s", n, $0, ">>>"; n = "" }
-END { printf "%s", n }
-' combined_reverse.fasta > combined_reverse_temp.fasta
+# # remove line breaks
+# # if line starts with > then print the line (i.e. header) and set next-line-character to \n for later
+# # if line does not start with > then print the next-line-character, print the line, print the ">>>" separator and set next-line-character to empty for later
+# awk '!/^>/ { printf "%s", $0; n = "\n" } 
+# /^>/ { printf "%s%s%s", n, $0, ">>>"; n = "" }
+# END { printf "%s", n }
+# ' combined_reverse.fasta > combined_reverse_temp.fasta
 
 # make second column unique
 # store header in m with seqeunce as index
 # then finally print m
 # awk 'BEGIN{FS=">>>"}{m[$2]=$1}END{for(i in m)print m[i],i}' combined_reverse_temp.fasta > combined_reverse_unique.fasta
+# an alternative with less memory footprint
+#sed -e s/\>\>\>/\>/g combined_reverse_temp.fasta> combined_reverse_temp2.fasta
+sort -T~/tmp -u -t">" -k3 combined_reverse_temp2.fasta > combined_reverse_temp3.fasta
+
 
 
 # move every second row to a new column
