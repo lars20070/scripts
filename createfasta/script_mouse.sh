@@ -19,7 +19,7 @@ cd $homedir || exit 2
 
 # download contaminants
 # from The Global Proteome Machine (GPM) common Repository of Adventitious Proteins (cRAP)
-# wget ftp://ftp.thegpm.org/fasta/cRAP/crap.fasta -O contaminants_crap.fasta
+wget ftp://ftp.thegpm.org/fasta/cRAP/crap.fasta -O contaminants_crap.fasta
 # from from MaxQuant
 # wget "http://lotus1.gwdg.de/mpg/mmbc/maxquant_input.nsf/7994124a4298328fc125748d0048fee2/\$FILE/contaminants.fasta" -O contaminants_maxquant.fasta
 
@@ -32,9 +32,9 @@ rm -fr ncbi
 mkdir ncbi
 cd ncbi || exit 2
 wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.nonredundant*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
 cd $homedir || exit 2
 cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
 
