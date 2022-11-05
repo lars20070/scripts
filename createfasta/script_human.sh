@@ -41,7 +41,7 @@ gzip -d uniprot_trembl.fasta.gz
 # download contaminants
 # from The Global Proteome Machine (GPM) common Repository of Adventitious Proteins (cRAP)
 wget ftp://ftp.thegpm.org/fasta/cRAP/crap.fasta -O contaminants_crap.fasta
-# from from MaxQuant
+# from MaxQuant
 # wget "http://lotus1.gwdg.de/mpg/mmbc/maxquant_input.nsf/7994124a4298328fc125748d0048fee2/\$FILE/contaminants.fasta" -O contaminants_maxquant.fasta
 
 # download complete phyla
