@@ -38,7 +38,24 @@ cd $homedir || exit 2
 # download UniProt bacteria reference proteome
 wget -r --accept "*.fasta.gz" --reject "*_DNA.fasta.gz" —-no-parent -nH --cut-dirs 5 ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Bacteria/
 
-# flatten directory structure and unzip
+# flatten directory structure, unzip and concatenate
 # find ./ -mindepth 2 -type f -exec cp '{}' Bacteria \;
 # gzip -d ./Bacteria/*.gz
 # cat ./Bacteria/*.fasta > uniprot_reference_bacteria.fasta
+
+
+
+
+# download all eukaryots
+# download dat.gz
+# search for string "OC   Eukaryota; Fungi" in *.dat.gz
+# loop over (sub)directories
+# for d in */ ; do
+#     echo "$d"
+# done
+
+# if grep -q SomeString "$File"; then
+#   Some Actions # SomeString was found
+# fi
+
+# if grep -q "OC   Eukaryota; Fungi" "UP000008783_418459.dat"; then echo FUNGUS; fi 
