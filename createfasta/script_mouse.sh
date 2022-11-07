@@ -17,37 +17,28 @@ homedir=$databasedir"mouse/"
 
 cd $homedir || exit 2
 
-# download contaminants
-# from The Global Proteome Machine (GPM) common Repository of Adventitious Proteins (cRAP)
-wget ftp://ftp.thegpm.org/fasta/cRAP/crap.fasta -O contaminants_crap.fasta
-# from MaxQuant
-wget "http://lotus1.gwdg.de/mpg/mmbc/maxquant_input.nsf/7994124a4298328fc125748d0048fee2/\$FILE/contaminants.fasta" -O contaminants_maxquant.fasta
+# rm -fr *
 
-# download UniProt mouse reference proteome
-# The reference proteome is a combination of both Swiss-Prot and TrEMBL protein seqiences. https://www.uniprot.org/help/reference_proteome
-wget "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090.fasta.gz" -O uniprot_reference_mouse.fasta.gz
-gzip -d uniprot_reference_mouse.fasta.gz
+# # download contaminants
+# # from The Global Proteome Machine (GPM) common Repository of Adventitious Proteins (cRAP)
+# wget ftp://ftp.thegpm.org/fasta/cRAP/crap.fasta -O contaminants_crap.fasta
+# # from MaxQuant
+# wget "http://lotus1.gwdg.de/mpg/mmbc/maxquant_input.nsf/7994124a4298328fc125748d0048fee2/\$FILE/contaminants.fasta" -O contaminants_maxquant.fasta
+
+# # download UniProt mouse reference proteome
+# # The reference proteome is a combination of both Swiss-Prot and TrEMBL protein seqiences. https://www.uniprot.org/help/reference_proteome
+# wget "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090.fasta.gz" -O uniprot_reference_mouse.fasta.gz
+# gzip -d uniprot_reference_mouse.fasta.gz
 
 # # download UniProt additional mouse reference proteome
 # # 'additional' refers to isoforms and variants. https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/README
 # wget "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090_additional.fasta.gz" -O uniprot_reference_mouse_additional.fasta.gz
 # gzip -d uniprot_reference_mouse_additional.fasta.gz
 
+# download UniProt bacteria reference proteome
+wget -r --accept "*.fasta.gz" --reject "*_DNA.fasta.gz" —-no-parent -nH --cut-dirs 5 ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Bacteria/
 
-# # download complete phyla
-# # National Institute of Health (NIH)
-# # National Library of Medecine (NLM)
-# # National Center for Biotechnology Information (NCBI)
-# # Bacteria + Archea + Fungi + Viruses
-# rm -fr ncbi
-# mkdir ncbi
-# cd ncbi || exit 2
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.nonredundant*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/archaea.nonredundant*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/*.protein.faa.gz
-# wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/*.protein.faa.gz
-# cd $homedir || exit 2
-# cat ./ncbi/*.faa > ncbi_bacteria_archaea_fungi_viral.fasta
-
-# # combine all sources
-# cat contaminants_crap.fasta ncbi_bacteria_archaea_fungi_viral.fasta > combined.fasta
+# flatten directory structure and unzip
+# find ./ -mindepth 2 -type f -exec cp '{}' Bacteria \;
+# gzip -d ./Bacteria/*.gz
+# cat ./Bacteria/*.fasta > uniprot_reference_bacteria.fasta
