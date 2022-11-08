@@ -17,12 +17,12 @@ cd $homedir || exit 2
 
 # # download UniProt mouse reference proteome
 # # The reference proteome is a combination of both Swiss-Prot and TrEMBL protein seqiences. https://www.uniprot.org/help/reference_proteome
-# wget "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090.fasta.gz" -O uniprot_reference_Mouse.fasta.gz
+# wget "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090.fasta.gz" -O uniprot_reference_Mouse.fasta.gz
 # gzip -d uniprot_reference_Mouse.fasta.gz
 
 # # download UniProt additional mouse reference proteome
 # # 'additional' refers to isoforms and variants. https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/README
-# wget "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090_additional.fasta.gz" -O uniprot_reference_Mouse_additional.fasta.gz
+# wget "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Eukaryota/UP000000589/UP000000589_10090_additional.fasta.gz" -O uniprot_reference_Mouse_additional.fasta.gz
 # gzip -d uniprot_reference_Mouse_additional.fasta.gz
 
 # # download UniProt reference proteomes for archaea, bacteria, fungi and viruses
