@@ -7,13 +7,16 @@ homedir=$databasedir"mouse/"
 
 cd $homedir || exit 2
 
-# download UniProt archaea reference proteome
-# wget -r --accept fasta.gz --reject DNA.fasta.gz,additional.fasta.gz —-no-parent -nH --cut-dirs 5 ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/Viruses/
+taxon=Viruses
+
+# download all Viruses UniProt reference proteomes
+# wget -r --accept fasta.gz --reject DNA.fasta.gz,additional.fasta.gz —-no-parent -nH --cut-dirs 5 ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/reference_proteomes/"$taxon"/
 
 # flatten directory structure, unzip and concatenate
-for dir in ./Viruses/*/
+for dir in ./"$taxon"/*/
 do
-     cp $dir/*.fasta.gz ./Viruses 
+     cp "$dir"/*.fasta.gz ./"$taxon" 
 done
-gzip -d ./Viruses/*.gz
-cat ./Viruses/*.fasta > uniprot_reference_viruses.fasta
+gzip -d ./"$taxon"/*.gz
+cat ./"$taxon"/*.fasta > uniprot_reference_$taxon.fasta
+# rm -fr ./"$taxon"
