@@ -4,8 +4,12 @@ Compiling `fasta` files for ComPIL searches from public repositories
 
 | script | description |
 | :--- | :--- |
-| `script_human.sh` | download sources for human microbiome, merge into single `fasta` and remove duplicate sequences|
-| `script_mouse.sh` | download sources for mouse microbiome, merge into single `fasta` and remove duplicate sequences|
+| `metaproteome_human.sh` | download sources for human microbiome, merge into single `fasta` and remove duplicate sequences<br>using sources referenced in ComPIL 2.0 paper including MAGs |
+| `metaproteome_mouse.sh` | download sources for mouse microbiome, merge into single `fasta` and remove duplicate sequences<br>using exclusively UniProt reference proteomes, no MAGs |
+| `reference_proteome_archaea.sh` | download reference proteome for archaea from UniProt (combination of Swiss-Prot and TrEMBL)|
+| `reference_proteome_bacteria.sh` | download reference proteome for bacteria from UniProt (combination of Swiss-Prot and TrEMBL)|
+| `reference_proteome_fungi.sh` | download reference proteome for fungi from UniProt (combination of Swiss-Prot and TrEMBL)|
+| `reference_proteome_viruses.sh` | download reference proteome for viruses from UniProt (combination of Swiss-Prot and TrEMBL)|
 
 &nbsp;
 
